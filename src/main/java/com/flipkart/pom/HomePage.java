@@ -10,7 +10,7 @@ public class HomePage extends BaseClass {
 
     //class
     private static final String closeLoginPopUp = "_30XB9F";
-    private static final String searchBox = "Pke_E";
+    private static final String searchBox = "Pke_EE";
 
     public HomePage closeLoginPopUp(){
         try {
@@ -21,13 +21,13 @@ public class HomePage extends BaseClass {
         } catch (NoSuchElementException e){
             e.getStackTrace();
         }
-        return homePage;
+        return getHomePage();
     }
 
     public HomePage searchProduct(String product) {
         driver.findElement(By.className(searchBox)).sendKeys(product);
         driver.findElement(By.className(searchBox)).sendKeys(Keys.RETURN);
-        return homePage;
+        return getHomePage();
     }
 
 

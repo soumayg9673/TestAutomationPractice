@@ -12,16 +12,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.flipkart.BaseClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.Listeners;
 
-@Listeners(ListenerTest.class)
 public class BaseClassTest {
 
     public static WebDriver driver;
     public static Properties properties;
 
-    public static  BaseClass baseClass;
+    public static BaseClass baseClass;
 
     private static final ArrayList<String> propertiesFiles = new ArrayList<>(
             List.of(("application.properties"))

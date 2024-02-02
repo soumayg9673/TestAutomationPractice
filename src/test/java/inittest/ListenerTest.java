@@ -4,12 +4,10 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class ListenerTest extends BaseClassTest implements ITestListener {
+public class ListenerTest implements ITestListener {
     @Override
     public void onFinish(ITestContext contextFinish) {
         System.out.println("onFinish method finished");
-        driver.quit();
-
     }
 
     @Override
@@ -20,14 +18,12 @@ public class ListenerTest extends BaseClassTest implements ITestListener {
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         System.out.println("Method failed with certain success percentage"+ result.getName());
-        driver.quit();
 
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("Method failed"+ result.getName());
-        driver.quit();
 
     }
 

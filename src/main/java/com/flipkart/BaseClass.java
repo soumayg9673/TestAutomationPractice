@@ -8,14 +8,7 @@ public class BaseClass {
 
     public static WebDriver driver;
 
-    public BaseClass(){}
-
-    public BaseClass(WebDriver tempDriver){
-        driver = tempDriver;
-        getHomePage();
-    }
-
-    public HomePage homePage;
+    private HomePage homePage;
 
     public HomePage getHomePage() {
         if (homePage == null){
@@ -23,5 +16,12 @@ public class BaseClass {
         }
         return homePage;
     }
-    
+
+    public BaseClass(){}
+
+    public BaseClass(WebDriver tempDriver){
+        driver = tempDriver;
+        homePage = getHomePage();
+    }
+
 }
