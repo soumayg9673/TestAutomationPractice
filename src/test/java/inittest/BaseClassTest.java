@@ -11,10 +11,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BaseClass {
+import com.flipkart.BaseClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Listeners;
+
+@Listeners(ListenerTest.class)
+public class BaseClassTest {
 
     public static WebDriver driver;
     public static Properties properties;
+
+    public static  BaseClass baseClass;
 
     private static final ArrayList<String> propertiesFiles = new ArrayList<>(
             List.of(("application.properties"))
@@ -23,6 +30,8 @@ public class BaseClass {
     static {
         readProperties();
         createWebDriver();
+        initBaseClass();
+        startBrowserSession();
     }
 
     private static void readProperties() {
@@ -38,8 +47,7 @@ public class BaseClass {
     }
 
     private static void createWebDriver() {
-        System.out.println(properties.getProperty("webdriver.browser"));
-        switch (properties.getProperty("webdriver.browser")){
+         switch (properties.getProperty("webdriver.browser")){
             case "chrome":
                 System.setProperty("webdriver.chrome.driver",properties.getProperty("webdriver.location"));
                 driver = new ChromeDriver();
@@ -54,6 +62,14 @@ public class BaseClass {
                 break;
             default: throw new WebDriverException("webdriver property is not defined");
         }
+    }
+
+    private static void initBaseClass() {
+        baseClass = new BaseClass(driver);
+    }
+
+    private static  void startBrowserSession() {
+        driver.get(properties.getProperty("baseurl"));
     }
 
 }
